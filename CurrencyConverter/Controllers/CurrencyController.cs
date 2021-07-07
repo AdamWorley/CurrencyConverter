@@ -31,7 +31,7 @@ namespace CurrencyConverter.Controllers
             return await Mediator.Send(new CurrentExchangeRatesQuery());
         }
 
-        [HttpGet("/convert")]
+        [HttpPost("/convert")]
         public async Task<double> GetConversionRequest([FromBody]GetConversionQuery conversionQuery)
         {
             return await Mediator.Send(conversionQuery);
