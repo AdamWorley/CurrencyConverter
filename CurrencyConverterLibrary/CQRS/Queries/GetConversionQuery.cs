@@ -1,5 +1,4 @@
 ﻿using CurrencyConverterLibrary.Interfaces;
-using CurrencyConverterLibrary.Models.OpenExchangeRates;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
