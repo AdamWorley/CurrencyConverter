@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.Library", "CurrencyConverterLibrary\CurrencyConverter.Library.csproj", "{CCB96B34-8676-4398-A786-64DA333DC017}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter.FrontEnd", "CurrencyConverter.FrontEnd\CurrencyConverter.FrontEnd.csproj", "{987FF640-ECBB-4710-8701-5D967DE2226C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CCB96B34-8676-4398-A786-64DA333DC017}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB96B34-8676-4398-A786-64DA333DC017}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB96B34-8676-4398-A786-64DA333DC017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987FF640-ECBB-4710-8701-5D967DE2226C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987FF640-ECBB-4710-8701-5D967DE2226C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987FF640-ECBB-4710-8701-5D967DE2226C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987FF640-ECBB-4710-8701-5D967DE2226C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

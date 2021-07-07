@@ -1,0 +1,40 @@
+﻿@page "/"
+@using CurrencyConverter.FrontEnd.Interfaces
+@inject ICurrencyServiceApi CurrencyServiceApi
+
+<h1>Currency Converter</h1>
+
+@if (currencies is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <select id="fromCurrency" class="form-control selectpicker" @bind="fromCurrency">
+        <option>--select--</option>
+        @foreach (var item in currencies)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+
+    <select id="toCurrency" class="form-control selectpicker" @bind="toCurrency">
+        <option>--select--</option>
+        @foreach (var item in currencies)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+
+}
+
+@code {
+    private List<string> currencies = null;
+    private string fromCurrency;
+    private string toCurrency;
+
+    protected override async Task OnInitializedAsync()
+    {
+        currencies = await CurrencyServiceApi.GetCurrenciesAsync();
+    }
+}
