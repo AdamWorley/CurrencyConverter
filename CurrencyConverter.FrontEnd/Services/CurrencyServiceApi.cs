@@ -24,8 +24,7 @@ namespace CurrencyConverter.FrontEnd.Services
         {
             try
             {
-                var foo =  await _currencyServiceApi.GetCurrenciesAsync(cancellationToken);
-                return new List<string> { "USD", "EUR", foo };
+                return await _currencyServiceApi.GetCurrenciesAsync(cancellationToken);
             }
             catch (System.Exception ex)
             {

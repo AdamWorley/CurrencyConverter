@@ -8,6 +8,6 @@ namespace CurrencyConverter.FrontEnd.Interfaces
     public interface ICurrencyConverterApi
     {
         [Get("/currencies")]
-        Task<string> GetCurrenciesAsync(CancellationToken cancellationToken = default);
+        Task<List<string>> GetCurrenciesAsync(CancellationToken cancellationToken = default);
     }
 }
