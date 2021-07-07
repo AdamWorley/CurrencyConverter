@@ -1,40 +1,72 @@
 ﻿@page "/"
 @using CurrencyConverter.FrontEnd.Interfaces
+@using CurrencyConverter.FrontEnd.Models
+@using CurrencyConverterLibrary.CQRS.Queries
 @inject ICurrencyServiceApi CurrencyServiceApi
 
 <h1>Currency Converter</h1>
 
-@if (currencies is null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <select id="fromCurrency" class="form-control selectpicker" @bind="fromCurrency">
-        <option>--select--</option>
-        @foreach (var item in currencies)
-        {
-            <option value="@item">@item</option>
-        }
-    </select>
 
-    <select id="toCurrency" class="form-control selectpicker" @bind="toCurrency">
-        <option>--select--</option>
-        @foreach (var item in currencies)
-        {
-            <option value="@item">@item</option>
-        }
-    </select>
+<EditForm Model="@conversionQuery" OnValidSubmit="@HandleSubmit">
 
-}
+    @if (currencies is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <p>
+        <label>
+            From Currency:
+            <select id="fromCurrency" class="form-control selectpicker" @bind="conversionQuery.FromCurrency">
+                @foreach (var item in currencies)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+        </label>
+        </p>
+        <p>
+        <label>
+            To Currency:
+            <select id="toCurrency" class="form-control selectpicker" @bind="conversionQuery.ToCurrency">
+                @foreach (var item in currencies)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+        </label>
+        </p>
+    }
+
+    <p>
+    <label>
+            Amount:
+    <InputNumber id="amount" step="0.01" placeholder="0.00" @bind-Value="conversionQuery.Amount" />
+    </label>
+    </p>
+            
+    <button type="submit">Convert</button>
+
+</EditForm>
+
+<h3>@convertedAmount</h3>
 
 @code {
     private List<string> currencies = null;
-    private string fromCurrency;
-    private string toCurrency;
+    private GetConversionRequest conversionQuery = new();
+    private double convertedAmount;
 
     protected override async Task OnInitializedAsync()
     {
         currencies = await CurrencyServiceApi.GetCurrenciesAsync();
+        var defaultCurrency = currencies.FirstOrDefault();
+        conversionQuery.ToCurrency = defaultCurrency;
+        conversionQuery.FromCurrency = defaultCurrency;
+    }
+
+    private async Task HandleSubmit()
+    {
+        convertedAmount = await CurrencyServiceApi.GetConversionAsync(conversionQuery);
     }
 }

@@ -1,10 +1,11 @@
-﻿using CurrencyConverterLibrary.Interfaces;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CurrencyConverter.FrontEnd.Interfaces;
-using System.Linq;
+using CurrencyConverterLibrary.CQRS.Queries;
+using CurrencyConverter.FrontEnd.Models;
+using System;
 
 namespace CurrencyConverter.FrontEnd.Services
 {
@@ -30,6 +31,15 @@ namespace CurrencyConverter.FrontEnd.Services
             {
                 return new List<string> { ex.Message };
             }
+        }
+
+        public async Task<double> GetConversionAsync(GetConversionRequest request, CancellationToken cancellationToken = default)
+        {
+            var query = new GetConversionQuery(request.FromCurrency, request.ToCurrency, Convert.ToInt32(Math.Round(request.Amount * 100, 0)));
+
+            var response = await _currencyServiceApi.GetConversionAsync(query, cancellationToken);
+
+            return Math.Round(response / 100,2);
         }
     }
 }
