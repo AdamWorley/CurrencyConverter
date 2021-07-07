@@ -24,6 +24,13 @@ namespace CurrencyConverter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .WithMethods("GET")
+                       .AllowAnyHeader();
+            }));
+
             services.AddMediatR(typeof(CurrencyService));
 
 
@@ -48,12 +55,12 @@ namespace CurrencyConverter
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
-                
             }
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CurrencyConverter v1"));
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
