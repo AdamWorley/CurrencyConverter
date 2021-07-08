@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
 using CurrencyConverterLibrary.Models;
+using FluentValidation.AspNetCore;
 
 namespace CurrencyConverter
 {
@@ -42,7 +43,9 @@ namespace CurrencyConverter
             services.AddSingleton<ICurrencyService, CurrencyService>();
 
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CurrencyConverter", Version = "v1" });
