@@ -1,5 +1,5 @@
-﻿using CurrencyConverterLibrary.Interfaces;
-using CurrencyConverterLibrary.Models;
+﻿using CurrencyConverter.Library.Models.OpenExchangeRates;
+using CurrencyConverterLibrary.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using System;

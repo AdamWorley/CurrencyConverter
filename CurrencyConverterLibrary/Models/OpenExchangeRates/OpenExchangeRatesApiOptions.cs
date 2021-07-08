@@ -1,4 +1,4 @@
-﻿namespace CurrencyConverterLibrary.Models
+﻿namespace CurrencyConverter.Library.Models.OpenExchangeRates
 {
     public class OpenExchangeRatesApiOptions
     {
