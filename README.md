@@ -22,10 +22,21 @@ If you have any time remaining and want some bonus points, they'll be awarded fo
 * Good code organisation
 * Good state management
 
+## Before Running
+
+For the external currency exchange api [open exchange rates](https://openexchangerates.org) an Api needs to be generated. Please add the following to the project secrets or include as an environment variable into the project.
+
+``` json
+ "OpenExchangeRates": {
+    "ApiKey": "Token ******{Your Api Key}******",
+    "BaseUrl": "https://openexchangerates.org/api"
+  }
+```
+
 ## ToDos
 
 * [x] Build Api
-* [ ] Unit tests for Api
+* [x] Unit tests for Api
 * [ ] Deploy Api to Azure
-* [ ] Build Frontend
+* [x] Build Frontend
 * [ ] Deploy Frontend to Azure
