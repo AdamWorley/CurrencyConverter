@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CurrencyConverter.FrontEnd.Interfaces;
@@ -12,13 +11,10 @@ namespace CurrencyConverter.FrontEnd.Services
     public class CurrencyServiceApi : ICurrencyServiceApi
     {
         private readonly ICurrencyConverterApi _currencyServiceApi;
-        private readonly IMemoryCache _cache;
-        private const string _key = "exchangeRates";
 
-        public CurrencyServiceApi(IMemoryCache cache, ICurrencyConverterApi currencyServiceApi)
+        public CurrencyServiceApi(ICurrencyConverterApi currencyServiceApi)
         {
             _currencyServiceApi = currencyServiceApi;
-            _cache = cache;
         }
 
         public async Task<List<string>> GetCurrenciesAsync(CancellationToken cancellationToken = default)
@@ -27,8 +23,9 @@ namespace CurrencyConverter.FrontEnd.Services
             {
                 return await _currencyServiceApi.GetCurrenciesAsync(cancellationToken);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
+                //TODO: Handle Error Response In UI
                 return new List<string> { ex.Message };
             }
         }
