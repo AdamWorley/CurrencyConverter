@@ -1,8 +1,6 @@
 ﻿using CurrencyConverterLibrary.CQRS.Queries;
 using CurrencyConverterLibrary.Models.OpenExchangeRates;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,12 +10,7 @@ namespace CurrencyConverter.Controllers
     [Route("[controller]")]
     public class CurrencyController : BaseController
     {
-        private readonly ILogger<CurrencyController> _logger;
-
-        public CurrencyController(ILogger<CurrencyController> logger)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
+        public CurrencyController() { }
 
         [HttpGet("/currencies")]
         public async Task<IEnumerable<string>> GetCurrencies()
