@@ -1,5 +1,5 @@
+using CurrencyConverter.Library.Models.OpenExchangeRates;
 using CurrencyConverterLibrary.Interfaces;
-using CurrencyConverterLibrary.Models;
 using CurrencyConverterLibrary.Services;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Memory;

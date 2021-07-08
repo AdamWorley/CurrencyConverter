@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
-using CurrencyConverterLibrary.Models;
+using CurrencyConverter.Library.Models.OpenExchangeRates;
 
 namespace CurrencyConverter
 {
