@@ -49,6 +49,7 @@ namespace CurrencyConverterLibrary.CQRS.Queries
 
             public async Task<IEnumerable<string>> Handle(AvailableCurrencyQuery request, CancellationToken cancellationToken)
             {
+                _logger.LogInformation("Getting available currencies");
                 return await _currencyService.GetCurrenciesAsync(cancellationToken);
             }
         }
