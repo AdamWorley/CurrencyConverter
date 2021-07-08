@@ -23,6 +23,7 @@ namespace CurrencyConverter.Tests
             new object[] { new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, 0, 0 },
             new object[] { new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, 5, 5 },
             new object[] { new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, new ExchangeRate { FromCurrency = "USD", ToCurrency = "EUR", Rate = 0.846403 }, 1, 1.17 },
+            new object[] { new ExchangeRate { FromCurrency = "USD", ToCurrency = "GBP", Rate = 0.725725 }, new ExchangeRate { FromCurrency = "USD", ToCurrency = "EUR", Rate = 0.846403 }, -1, -1.17 },
         };
     }
 }
